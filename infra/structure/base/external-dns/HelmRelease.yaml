@@ -1,0 +1,27 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-cf-buttahtoast
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: "external-dns"
+      version: "{{ .Values.externalDns.version }}"
+      sourceRef:
+        kind: HelmRepository
+        name: "external-dns"
+        namespace: "{{ .Release.Namespace }}"
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+  values: 
+    domainFilters:
+    - "buttahtoast.ch"
+    provider: cloudflare
+    env:
+        - name: CF_API_TOKEN
+          value: "{{ .Values.secrets.cloudflare.apiToken }}"
+        - name: ANNOTATION_FILTER
+          value: "buttah.io/external-dns in (buttah)"

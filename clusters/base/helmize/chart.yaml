@@ -1,0 +1,15 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmChart
+metadata:
+  name: infrastructure
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  chart: ./infra/
+  reconcileStrategy: ChartVersion
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  version: '>0.0.0-0'

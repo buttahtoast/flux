@@ -1,0 +1,21 @@
+inventory_directory: "structure/"
+templates_directory: "tpls/"
+conditions:
+
+  - name: "base"
+    path: "/base/"
+    allow_root: true
+
+
+  - name: "location"
+    key: "Values.cluste.location"
+    path: "loc/"
+    filter: [ "glo", "glk" ]
+    reverse_filter: true
+
+  - name: "groups"
+    key: "Values.cluster.groups"
+    path: "groups/"
+    #filter: [ "harvester" ]
+    reverse_filter: false
+    key_types: [ "slice" ]
