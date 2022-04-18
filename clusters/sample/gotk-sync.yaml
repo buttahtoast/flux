@@ -15,3 +15,6 @@ spec:
     provider: sops
     secretRef:
       name: flux-system-gpg-key
+  postBuild:
+    substitute:
+      branch: "init"
