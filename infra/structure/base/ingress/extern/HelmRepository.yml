@@ -1,0 +1,7 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: ingress
+spec:
+  url: https://kubernetes.github.io/ingress-nginx
+  interval: {{ default "5m0s" }}

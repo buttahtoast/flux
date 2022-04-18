@@ -1,0 +1,6 @@
+## Cluster Configuration
+cluster:
+  id: 4
+  location: glk
+  groups:
+    - harvester

@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: yggdrasil-read-only
+automountServiceAccountToken: true
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: '*'
+  name: yggdrasil-read-only
+rules:
+- apiGroups: ["extensions"]
+  resources: ["ingresses"]
+  verbs: ["get", "list", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: yggdrasil-sa-binding
+subjects:
+- kind: ServiceAccount
+  name: yggdrasil-read-only
+  namespace: buttah-system
+roleRef:
+  kind: ClusterRole
+  name: yggdrasil-read-only
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ingressregsitercloud
+  labels:
+    app: IngressRegsiterCloud
+spec:
+  template:
+    metadata:
+      name: ingressregsitercloud
+      labels:
+        app: IngressRegsiterCloud
+    spec:
+      serviceAccountName: yggdrasil-read-only
+      automountServiceAccountToken: true
+      containers:
+      - name: ingressregsitercloud
+        image: linuxserver/openssh-server
+        command: 
+          - 'sh'
+          - '-c'
+          - |
+            token=$(cat /run/secrets/kubernetes.io/serviceaccount/token)
+            cert=$(cat /run/secrets/kubernetes.io/serviceaccount/ca.crt | base64  -w0)
+            eval $(ssh-agent)
+            echo "${KEY}" | base64 -d | ssh-add -
+            echo  "${CLUSTER_ID}" "${CLUSTER_URL}" "${token}" "${cert}"
+            ssh -o StrictHostKeyChecking=no ${USER}@${CLOUD} /services/ingress/bin/register_node.sh ${CLUSTER_ID} ${CLUSTER_URL} ${token} ${cert}
+        env:
+        - name: CLOUD
+          value: "{{ .Values.ingress.cloud.host }}"
+        - name: USER
+          value: "{{ .Values.ingress.cloud.user }}"
+        - name: KEY
+          value: "{{ .Values.ingress.cloud.key }}"
+        - name: CLUSTER_URL
+          value: "{{ .Values.ingress.cloud.clusterUrl }}"
+        - name: CLUSTER_ID
+          value: "{{ .Values.cluster.id }}"
+      restartPolicy: OnFailure
+      dnsPolicy: ClusterFirst
+      
