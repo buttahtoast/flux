@@ -10,7 +10,7 @@ spec:
   ref:
     branch: main
   url: https://github.com/buttahtoast/flux.git
-  verify:
-    mode: head
-    secretRef:
-      name: admin-gpg-pub-keys   
+  #verify:
+  #  mode: head
+  #  secretRef:
+  #    name: admin-gpg-pub-keys   
