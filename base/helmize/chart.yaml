@@ -13,3 +13,5 @@ spec:
     name: flux-system
     namespace: flux-system
   version: '>0.0.0-0'
+  valuesFiles:
+    - values.yaml

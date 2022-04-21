@@ -1,0 +1,26 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: infrastructure
+  namepsace: flux-system
+spec:
+  interval: 1m
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./infra/
+      version: ">0.0.0-0"
+      sourceRef:
+        name: flux-system 
+        kind: GitRepository
+  valuesFrom:
+    - kind: Secret
+      name: harbor-external-secrets

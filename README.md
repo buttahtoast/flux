@@ -20,6 +20,10 @@ kubectl create secret generic flux-system-gpg-key \
 ```
 
 
+now push
+
+
+
 
 
 
