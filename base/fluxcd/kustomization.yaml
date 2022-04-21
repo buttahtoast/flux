@@ -7,8 +7,8 @@ secretGenerator:
 - name: admin-gpg-pub-keys
   namespace: flux-system
   files:
-  - ../../../gpg/olb.asc
-  - ../../../gpg/kkl.asc
+  - ../../gpg/olb.asc
+  - ../../gpg/kkl.asc
   type: Opaque
 generatorOptions:
  disableNameSuffixHash: true
