@@ -3,5 +3,8 @@ kind: Kustomization
 resources:
 - ../../base
 - gotk-sync.yaml
-patchesStrategicMerge:
-- values.yaml
+patches:
+- path: values.yaml
+  target:
+    kind: HelmRelease
+    name: infrastructure

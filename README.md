@@ -1,6 +1,13 @@
 # Infrastructure 
 
 
+# Structure 
+
+The following Structure applies to this repository:
+
+
+
+
 
 ## Bootstrap a cluster
 
@@ -22,7 +29,14 @@ kubectl create secret generic flux-system-gpg-key \
 
 now push
 
+# Development
 
+Development commands
+## Local Build 
+
+```
+kustomize build --load-restrictor LoadRestrictionsNone  .
+```
 
 
 
