@@ -1,0 +1,6 @@
+dependencies:
+- name: helmize
+  repository: https://oliverbaehler.github.io/helmize/
+  version: 0.1.0-rc.6
+digest: sha256:f57dbf0525911493eaf96bd16fc9598e377905f9615cde9fdb9d8e4109ed4b01
+generated: "2022-06-24T13:28:50.435660763+02:00"
