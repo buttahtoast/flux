@@ -1,6 +1,6 @@
 dependencies:
 - name: helmize
-  repository: file://helmize/charts/helmize
-  version: 0.1.0-rc.5
-digest: sha256:aea6d1d40fe68f65c2ae2ca39709ae1f0aaa85b9b0a7056c08287a0c867e8486
-generated: "2022-05-26T15:33:29.102906+02:00"
+  repository: https://oliverbaehler.github.io/helmize/
+  version: 0.1.0-rc.6
+digest: sha256:f57dbf0525911493eaf96bd16fc9598e377905f9615cde9fdb9d8e4109ed4b01
+generated: "2022-06-24T13:28:50.435660763+02:00"
