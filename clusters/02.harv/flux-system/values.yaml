@@ -1,6 +1,14 @@
-## Cluster Configuration
-cluster:
-  id: 4
-  location: glk
-  groups:
-    - harvester
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: infrastructure
+  namespace: flux-system
+spec: 
+  values:
+    ## Cluster Configuration
+    cluster:
+      id: 4
+      location: glk
+      groups:
+        - harvester
