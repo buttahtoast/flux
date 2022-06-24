@@ -9,7 +9,7 @@ spec:
   interval: 2m
   ref:
     branch: ${branch:-main}
-  url: https://github.com/buttahtoast/flux
+  url: ssh://git@github.com/buttahtoast/flux
   #verify:
   #  mode: head
   #  secretRef:
