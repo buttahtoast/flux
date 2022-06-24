@@ -1,0 +1,35 @@
+
+    ## Default Namespace
+    namespace: "buttah-system"
+
+    ## Infrsatructure Configuration
+    infra: 
+
+      dns: 
+
+        lab:
+          annotation: "k8s.buttah.ch/dns"
+
+        svc:
+          annotation: k8s.buttah.ch/dns
+        
+
+    
+    ## Application Configuration
+    apps:
+      metallb:
+        version: "0.12.1"
+        namespace: "metallb-system"
+    
+      ingress:
+        version: "4.0.19"
+        namespace: "ingress-system"
+    
+      certManager:
+        version: "1.8.0"
+        namespace: "cert-manager"
+    
+      externalDns:
+        enabled: true
+        version: "1.7.1"
+        namespace: "dns-system"

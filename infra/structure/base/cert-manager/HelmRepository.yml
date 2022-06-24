@@ -1,7 +1,11 @@
+{{- with .Values.apps.certManager -}}
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: jetstack
+  namespace: "{{ .namespace }}"
 spec:
   url: https://charts.jetstack.io
   interval: {{ default "5m0s" }}
+{{- end -}}
+

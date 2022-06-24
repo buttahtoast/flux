@@ -26,22 +26,5 @@ spec:
   #    name: harbor-external-secrets
   values:
 
-    ## Global Configuration
-    namespace: "buttah-system"
-    
-    ## Application Configuration
-    apps:
-      metallb:
-        version: "0.12.1"
-    
-      ingress:
-        version: "4.0.19"
-    
-      certManager:
-        version: "1.8.0"
-    
-      externalDns:
-        version: "1.7.1"
-
 
 

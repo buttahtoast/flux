@@ -1,0 +1,13 @@
+
+{{/*
+  ExternalDNS Helm Repository
+*/}}
+{{- define "infra.repos.externalDns" -}}
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: external-dns
+spec:
+  url: https://kubernetes-sigs.github.io/external-dns/
+  interval: {{ default "5m0s" }}
+{{- end -}}
