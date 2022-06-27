@@ -21,9 +21,9 @@ spec:
       sourceRef:
         name: flux-system 
         kind: GitRepository
-  #valuesFrom:
-  #  - kind: Secret
-  #    name: harbor-external-secrets
+  valuesFrom:
+    - kind: Secret
+      name: infra-values
   values:
 
 
