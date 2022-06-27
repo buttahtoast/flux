@@ -1,24 +1,24 @@
-{{- if $.Values.apps.externalDns.enabled -}}
-{{- $ns := include "infra.ns.externalDns.extern" $ -}}
----
-helmize:
-  id: 
-    - "external-dns-release"
-    - "external-dns-extern"
-  fork: true
-metadata:
-  name: external-dns-extern
-  namespace: {{ $ns }}
-spec:
-  values: 
-    domainFilters:
-    - "buttahtoast.ch"
-    provider: cloudflare
-    env:
-        - name: CF_API_TOKEN
-          value: "{{ .Values.secrets.cloudflare_token }}"
-        - name: ANNOTATION_FILTER
-          value: "buttah.io/external-dns in (buttah)
----
-{{- include "infra.repos.externalDns" (dict "ns" $ns "ctx" $) | nindent 0 -}}
-{{- end -}}
+# {{- if $.Values.apps.externalDns.enabled -}}
+# {{- $ns := include "infra.ns.externalDns.extern" $ -}}
+# ---
+# helmize:
+#   id: 
+#     - "external-dns-release"
+#     - "external-dns-extern"
+#   fork: true
+# metadata:
+#   name: external-dns-extern
+#   namespace: {{ $ns }}
+# spec:
+#   values: 
+#     domainFilters:
+#     - "buttahtoast.ch"
+#     provider: cloudflare
+#     env:
+#         - name: CF_API_TOKEN
+#           value: "{{ .Values.secrets.cloudflare_token }}"
+#         - name: ANNOTATION_FILTER
+#           value: "buttah.io/external-dns in (buttah)
+# ---
+# {{- include "infra.repos.externalDns" (dict "ns" $ns "ctx" $) | nindent 0 -}}
+# {{- end -}}
