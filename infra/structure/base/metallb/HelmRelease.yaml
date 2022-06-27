@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: "metallb"
-      version: "{{ .Values.metallb.version }}"
+      version: "{{ .Values.apps.metallb.version }}"
       sourceRef:
         kind: HelmRepository
         name: metallb

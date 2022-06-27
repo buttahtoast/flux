@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: "ingress-nginx"
-      version: "{{ .Values.ingress.version }}"
+      version: "{{ .Values.apps.ingress.version }}"
       sourceRef:
         kind: HelmRepository
         name: "ingress"
