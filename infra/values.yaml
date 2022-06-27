@@ -5,6 +5,9 @@
     ## Infrsatructure Configuration
     infra: 
 
+      cert:
+        email: info@buttahtoast.ch
+
       dns: 
 
         lab:
