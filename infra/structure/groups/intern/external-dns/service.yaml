@@ -1,25 +1,25 @@
-{{- if $.Values.apps.externalDns.enabled -}}
-{{- $ns := include "infra.ns.externalDns.intern" $ -}}
----
-helmize:
-  id: 
-    - "external-dns-release"
-    - "external-dns-intern"
-  fork: true
-metadata:
-  name: external-dns-internal
-  namespace: {{ $ns }}
-spec:
-  values: 
-    txtOwnerId: "{{ $.Values.cluster.id }}-svc"
-    annotationFilter: "{{ $.Values.infra.dns.svc.annotation }} in (svc, service)"
-    provider: "rfc2136"
-    rfc2136:
-      zone: "int.buttahtoast.ch"
-      host: "185.74.120.238"
-      tsigKeyname: k8s
-      tsigSecretAlg: "hmac-sha512"
-      tsigAxfr: true
-      minTTL: "120s"
-      secretName: "svc-tsig
-{{- end -}}
+# {{- if $.Values.apps.externalDns.enabled -}}
+# {{- $ns := include "infra.ns.externalDns.intern" $ -}}
+# ---
+# helmize:
+#   id: 
+#     - "external-dns-release"
+#     - "external-dns-intern"
+#   fork: true
+# metadata:
+#   name: external-dns-internal
+#   namespace: {{ $ns }}
+# spec:
+#   values: 
+#     txtOwnerId: "{{ $.Values.cluster.id }}-svc"
+#     annotationFilter: "{{ $.Values.infra.dns.svc.annotation }} in (svc, service)"
+#     provider: "rfc2136"
+#     rfc2136:
+#       zone: "int.buttahtoast.ch"
+#       host: "185.74.120.238"
+#       tsigKeyname: k8s
+#       tsigSecretAlg: "hmac-sha512"
+#       tsigAxfr: true
+#       minTTL: "120s"
+#       secretName: "svc-tsig
+# {{- end -}}
