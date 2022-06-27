@@ -15,8 +15,8 @@ spec:
     annotationFilter: "{{ $.Values.infra.dns.svc.annotation }} in (svc, service)"
     provider: "rfc2136"
     rfc2136:
-      zone: "${infra_domain}"
-      host: "${rfc2136_host}"
+      zone: "int.buttahtoast.ch"
+      host: "185.74.120.238"
       tsigKeyname: k8s
       tsigSecretAlg: "hmac-sha512"
       tsigAxfr: true
