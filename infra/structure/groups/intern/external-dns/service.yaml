@@ -22,6 +22,4 @@ spec:
       tsigAxfr: true
       minTTL: "120s"
       secretName: "svc-tsig
----
-{{- include "infra.repos.externalDns" (dict "ns" $ns "ctx" $) | nindent 0 -}}
 {{- end -}}
