@@ -27,14 +27,14 @@ spec:
         name: cf-buttahtoast
       spec:
         acme:
-          email: {{ .Values.certManager.cfButtahtoast.email }}
+          email: {{ .Values.infra.cert.email }}
           server: https://acme-v02.api.letsencrypt.org/directory
           privateKeySecretRef:
             name: example-issuer-account-key
           solvers:
           - dns01:
               cloudflare:
-                email: {{ .Values.certManager.cfButtahtoast.email }}
+                email: {{ .Values.infra.cert.email }}
                 apiTokenSecretRef:
                   name: cloudflare-api-token-secret
                   key: api-token
@@ -47,4 +47,4 @@ spec:
         name: cloudflare-api-token-secret
       type: Opaque
       stringData: 
-        api-token: {{ .Values.certManager.cfButtahtoast.apiToken }}
+        api-token: {{ .Values.secrets.cloudflare_token }}
