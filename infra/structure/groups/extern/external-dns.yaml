@@ -16,7 +16,7 @@ spec:
     provider: cloudflare
     env:
         - name: CF_API_TOKEN
-          value: "{{ .Values.secrets.cloudflare.apiToken }}"
+          value: "{{ .Values.secrets.cloudflare_token }}"
         - name: ANNOTATION_FILTER
           value: "buttah.io/external-dns in (buttah)
 ---
