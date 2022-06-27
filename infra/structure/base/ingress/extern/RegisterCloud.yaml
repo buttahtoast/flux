@@ -57,13 +57,13 @@ spec:
             ssh -o StrictHostKeyChecking=no ${USER}@${CLOUD} /services/ingress/bin/register_node.sh ${CLUSTER_ID} ${CLUSTER_URL} ${token} ${cert}
         env:
         - name: CLOUD
-          value: "{{ .Values.ingress.cloud.host }}"
+          value: "{{ .Values.secrets.cloud_ingress_host }}"
         - name: USER
-          value: "{{ .Values.ingress.cloud.user }}"
+          value: "{{ .Values.secrets.cloud_ingress_user }}"
         - name: KEY
-          value: "{{ .Values.ingress.cloud.key }}"
+          value: "{{ .Values.secrets.cloud_ingress_key }}"
         - name: CLUSTER_URL
-          value: "{{ .Values.ingress.cloud.clusterUrl }}"
+          value: "{{ .Values.cluster.url }}"
         - name: CLUSTER_ID
           value: "{{ .Values.cluster.id }}"
       restartPolicy: OnFailure

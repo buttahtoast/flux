@@ -12,3 +12,4 @@ spec:
       location: glk
       groups:
         - harvester
+      url: https://10.123.12.253:6443
